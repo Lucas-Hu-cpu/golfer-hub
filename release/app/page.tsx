@@ -3,6 +3,7 @@ import { ArrowRight, BookOpen, MessageSquare, Flag } from 'lucide-react';
 import { catalog, feed, coaches, voteStates } from '../lib/queries';
 import { currentUser } from '../lib/supabase';
 import { ArticleCard, ForumPostCard, CoachCard, Empty } from '../components/ui';
+export const metadata = { alternates: { canonical: '/' } };
 export default async function Home() {
   const [content, discussions, teachers, user] = await Promise.all([
     catalog(),

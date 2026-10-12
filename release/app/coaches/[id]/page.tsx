@@ -5,6 +5,17 @@ import { currentUser, database } from '../../../lib/supabase';
 import { Heading, Save, ArticleCard } from '../../../components/ui';
 import { ActionForm } from '../../../components/forms';
 import { enquiryAction } from '../../actions';
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const coach = (await coaches()).find((c) => c.id === id);
+  return coach
+    ? {
+        title: coach.name,
+        description: coach.bio,
+        alternates: { canonical: `/coaches/${encodeURIComponent(id)}` },
+      }
+    : { title: 'Coach not found', robots: { index: false, follow: false } };
+}
 export default async function Coach({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const coach = (await coaches()).find((c) => c.id === id);

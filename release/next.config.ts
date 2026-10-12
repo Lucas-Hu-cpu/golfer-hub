@@ -1,4 +1,6 @@
 import type { NextConfig } from 'next';
+import { assertProductionConfiguration } from './lib/release-policy';
+assertProductionConfiguration();
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   async headers() {

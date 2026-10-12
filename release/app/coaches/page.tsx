@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { coaches } from '../../lib/queries';
 import { Heading, SearchBar, CoachCard, Empty } from '../../components/ui';
-export const metadata = { title: 'Discover Coaches' };
+export const metadata = { title: 'Discover Coaches', alternates: { canonical: '/coaches' } };
 const specialties = [
   'Swing Coach',
   'Short Game',

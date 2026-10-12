@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Navbar } from '../components/navigation';
 import { currentUser } from '../lib/supabase';
 import { siteOrigin } from '../lib/site-origin';
+import { publicIndexingEnabled } from '../lib/release-policy';
 import './globals.css';
 import './responsive.css';
 export const dynamic = 'force-dynamic';
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   title: { default: 'Golfer Hub | Learn. Practice. Connect.', template: '%s | Golfer Hub' },
   description:
     'An independent student-built golf learning library and community. Sourced lessons, purposeful practice and honest coaching connections.',
-  robots: { index: false, follow: false },
+  robots: { index: publicIndexingEnabled(), follow: publicIndexingEnabled() },
   openGraph: { title: 'Golfer Hub', description: 'Learn. Practice. Connect.', images: ['/og.png'] },
   icons: { icon: '/favicon.svg' },
 };
@@ -24,7 +25,9 @@ export default async function Layout({ children }: { children: React.ReactNode }
           Skip to content
         </a>
         <Navbar signedIn={Boolean(user)} />
-        <main id="main">{children}</main>
+        <main id="main" tabIndex={-1}>
+          {children}
+        </main>
         <footer>
           <div className="footer-top">
             <Link href="/" className="brand">

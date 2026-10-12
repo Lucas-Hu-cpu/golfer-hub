@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { catalog, taxonomy } from '../../lib/queries';
 import { ArticleCard, Heading, SearchBar, Empty } from '../../components/ui';
-export const metadata = { title: 'Learning Library' };
+export const metadata = { title: 'Learning Library', alternates: { canonical: '/learn' } };
 export default async function Learn({
   searchParams,
 }: {

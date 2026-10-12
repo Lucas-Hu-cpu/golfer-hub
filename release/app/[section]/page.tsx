@@ -5,6 +5,26 @@ import { ActionForm } from '../../components/forms';
 import { authAction, profileAction } from '../actions';
 import { currentUser, database } from '../../lib/supabase';
 import { catalog } from '../../lib/queries';
+export async function generateMetadata({ params }: { params: Promise<{ section: string }> }) {
+  const { section } = await params;
+  const titles: Record<string, string> = {
+    sources: 'Source Library',
+    about: 'Our Story',
+    privacy: 'Privacy',
+    guidelines: 'Community Guidelines',
+    signup: 'Create Account',
+    login: 'Sign In',
+    recover: 'Password Recovery',
+    account: 'Your Account',
+  };
+  const publicSection = ['sources', 'about', 'privacy', 'guidelines'].includes(section);
+  return {
+    title: titles[section] || 'Page Not Found',
+    ...(publicSection
+      ? { alternates: { canonical: `/${section}` } }
+      : { robots: { index: false, follow: false } }),
+  };
+}
 export default async function SupportingPage({
   params,
   searchParams,

@@ -10,8 +10,12 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   const { lessons } = await catalog();
   const lesson = lessons.find((item) => item.id === id);
   return lesson
-    ? { title: lesson.title, description: lesson.summary }
-    : { title: 'Guide not found' };
+    ? {
+        title: lesson.title,
+        description: lesson.summary,
+        alternates: { canonical: `/learn/${encodeURIComponent(id)}` },
+      }
+    : { title: 'Guide not found', robots: { index: false, follow: false } };
 }
 export default async function Article({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
