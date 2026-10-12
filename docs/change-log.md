@@ -1,6 +1,7 @@
 # Change Log
 
 ## 2026-10-12
+- Production preparation addendum: assessed shared Vercel future-build impact; switched intended project root to release with pinned Corepack/pnpm installation, outside-root disabled and automatic Production ignore rule. Other legacy project and main unchanged. Automatic Git Preview 2c52c1e READY at hevc59424, exact source/branch independently verified. Eleven tests/lint/typecheck/build passed; skip-link focus fixed, Preview/private SEO policy and Production configuration guards added. Rollback-only real two-session editorial contention and separate local service-failure/mobile error UI passed. Prepared owner decision packet, isolation/auth/SMTP manifest, blocker/deferred matrix and non-destructive rollback plan. Production services, real expired/reused links, owner policy decisions and final authenticated reruns remain open; no Production deployment or purchase.
 - Audited local source, historical brief, master request, GitHub access and Vercel project inventory.
 - Created requirements traceability and decisions before implementation.
 - Preserved legacy source; started independent release implementation.
